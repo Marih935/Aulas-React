@@ -1,6 +1,7 @@
 import React from "react"; /* importa biblioteca React */
 import ReactDOM from "react-dom/client";
 import Timer from "./components/Exemplo01"; //importa componente
+import "./index.css";
 
 // class OlaMundo extends React.Component{ /* componente (usado na metodologia de classe)*/
 //     render(){
@@ -27,8 +28,9 @@ const root = ReactDOM.createRoot(document.getElementById("root")); /* renderiza 
 //root.render(<Pagina01 nome={["Mariana", "Mari"]}/>);
 //root.render(<Timer />); //chama componente Timer do exemplo 01
 root.render(
-    <div>
-        <Timer start = {0} ms = {1000}/>
-        <Timer start = {100} ms = {100}/>
-    </div>
+    <>
+        <div>
+            <Timer start = {0} ms = {1000}/>
+        </div>
+    </>
 );

@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import {ReactDOM} from "react";
 //react faz isso automaticamente
 
 class Timer extends React.Component {
@@ -13,18 +13,44 @@ class Timer extends React.Component {
         this.setState(state => ({seconds: state.seconds + 1})); //atributo => altera estado do componente adicionando novo estado
     }
 
-    componentDidMount(){ //método para "montar"
-        this.interval = setInterval(() => this.contar(), this.props.ms); //interval => função pra contar tempo, a cada "ms" vai mudar o estado
+    startStop(){
+        if(this.interval){
+            clearInterval(this.interval);
+            this.interval = null;
+        } else{
+            this.interval = setInterval(() => this.contar(), this.props.ms);
+        }
     }
+    
+    // componentDidMount(){ //método para "montar"
+    //     this.interval = setInterval(() => this.contar(), this.props.ms); //interval => função pra contar tempo, a cada "ms" vai mudar o estado
+    // }
 
-    componentWillUnmount(){ //método para "desmontar"
-        clearInterval(this.interval); //finalizar para n dar erro (só pararia de contar quando fechar o navegador)
-    }
+    // componentWillUnmount(){ //método para "desmontar"
+    //     clearInterval(this.interval); //finalizar para n dar erro (só pararia de contar quando fechar o navegador)
+    // }
 
     render(){
-        return <h1>Segundos: {this.state.seconds}</h1>; //imprimir o valor do estado do componente
-    }
+        return(
+            <>
+                <div className="bg-black w-48 md:w-96 h-16 m-4 rounded-xl flex flex-col justify-center items-center">
+                    <h1 className="text-3xl text-azull01 cronometro">
+                        {this.state.seconds}
+                    </h1>
+                </div>
 
+                <div>
+                    <button onClick={this.startStop} className="bg-azull01 text-white rounded-lg m-4 px-4 py-3">
+                    Iniciar/Parar
+                    </button>
+
+                    <button onClick={this.zero} className="bg-red-600 text-white rounded-lg m-4 px-4 py-3">
+                        Zerar
+                    </button>
+                </div>
+            </>
+        )
+    }
 }
 
 export default Timer;
