@@ -29,8 +29,6 @@ const root = ReactDOM.createRoot(document.getElementById("root")); /* renderiza 
 //root.render(<Timer />); //chama componente Timer do exemplo 01
 root.render(
     <>
-        <div>
-            <Timer start = {0} ms = {1000}/>
-        </div>
+        <Timer start={0} ms={1000}></Timer>
     </>
 );

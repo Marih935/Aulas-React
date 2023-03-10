@@ -1,5 +1,5 @@
 import React from "react";
-import {ReactDOM} from "react";
+import {ReactDOM} from "react-dom/client";
 //react faz isso automaticamente
 
 class Timer extends React.Component {
@@ -10,7 +10,7 @@ class Timer extends React.Component {
     }
 
     contar(){ //método do Timer
-        this.setState(state => ({seconds: state.seconds + 1})); //atributo => altera estado do componente adicionando novo estado
+        this.setState(state => ({ seconds: state.seconds + 1 })); //atributo => altera estado do componente adicionando novo estado
     }
 
     startStop(){
@@ -18,10 +18,14 @@ class Timer extends React.Component {
             clearInterval(this.interval);
             this.interval = null;
         } else{
-            this.interval = setInterval(() => this.contar(), this.props.ms);
+            this.interval = setInterval(() => this.contar(), 1000);
         }
     }
     
+zero(){
+    this.setState(state => ({ seconds: 0 }));
+}
+
     // componentDidMount(){ //método para "montar"
     //     this.interval = setInterval(() => this.contar(), this.props.ms); //interval => função pra contar tempo, a cada "ms" vai mudar o estado
     // }
@@ -39,17 +43,17 @@ class Timer extends React.Component {
                     </h1>
                 </div>
 
-                <div>
-                    <button onClick={this.startStop} className="bg-azull01 text-white rounded-lg m-4 px-4 py-3">
+                <div className="flex flex-row justify-center w-48 md:w-96 m-4">
+                    <button onClick={this.startStop()} className="bg-azull01 text-white rounded-lg scroll-py-24 w-36 m-4 px-4 py-3">
                     Iniciar/Parar
                     </button>
 
-                    <button onClick={this.zero} className="bg-red-600 text-white rounded-lg m-4 px-4 py-3">
+                    <button onClick={this.zero()} className="bg-red-600 text-white rounded-lg scroll-py-24 w-36 m-4 px-4 py-3">
                         Zerar
                     </button>
                 </div>
             </>
-        )
+        );
     }
 }
 
