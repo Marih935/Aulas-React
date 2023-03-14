@@ -16,6 +16,9 @@
     "plugins": [
         "react"
     ],
+    "ignorePatterns": ["*.css", "**/vendor/**"],
     "rules": {
+        "react/prop-types": "off",
+        "jsx-a11y/label-has-associated-control": "off"
     }
 }

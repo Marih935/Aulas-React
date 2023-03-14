@@ -6,7 +6,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        azull01: '#006ec7',
+        amarelo01: '#ffbf31',
+        amarelo02: '#efa903',
+        azul01: '#006ec7',
+        azul02: '#0033ab',
+        azul03: '#00247d',
+        preto: '#101010',
+        branco: '#fdfdfd',
       }
     },
   },
